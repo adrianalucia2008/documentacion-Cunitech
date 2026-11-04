@@ -152,3 +152,4 @@ flutter run -d <ID_DEL_DISPOSITIVO>
   * Inicio de sesión: `supabase functions deploy login`
 
   
+  
