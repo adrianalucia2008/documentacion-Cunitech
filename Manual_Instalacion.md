@@ -107,17 +107,30 @@ flutter build apk --release
 El archivo APK se genera en `build/app/outputs/flutter-apk/app-release.apk` y puede distribuirse directamente o publicarse en Google Play.
 
 ### 6.3. Despliegue del Backend (Edge Functions) — solo propietarios del proyecto Supabase
-Las funciones ya están desplegadas. Esta sección solo aplica a quien tenga acceso al proyecto de Supabase y necesite actualizarlas. Asegúrese de estar autenticado y vinculado al proyecto:
-```bash
-supabase login
-supabase link --project-ref aswhtehpmmeetplnskmz
-supabase functions deploy login
-supabase functions deploy create-user
-supabase functions deploy generate-insights
-supabase functions deploy identify-breed
-supabase functions deploy chat-assistant
-supabase functions deploy health
-```
+Las funciones del servidor (IA y creación de usuarios) se despliegan a Supabase mediante la CLI. Para ello, siga estos pasos:
+
+**Autenticación en Supabase:**
+   Ejecute el siguiente comando para iniciar sesión en su cuenta de Supabase. Este paso es obligatorio la primera vez que se configura el proyecto en un equipo, ya que la CLI necesita un token de acceso para autorizar los despliegues.
+   ```bash
+   supabase login
+   ```
+   *(Nota: Se abrirá una ventana en el navegador para que ingrese sus credenciales. Si ya ha iniciado sesión previamente en este equipo, puede omitir este paso).*
+
+2. **Vincular el proyecto local con el remoto:**
+   Una vez autenticado, vincule la carpeta local con e proyecto en la nube. Reemplace con el ID de referencia del proyecto 
+
+   ```bash
+   upabase link --project-ref aswhtehpmmeetplnskmz
+   ```
+
+3. **Desplegar las funciones:**
+   Finalmente, suba cada una de las Edge Functions a producción:
+   ```bash
+   supabase functions deploy create-user
+   supabase functions deploy generate-insights
+   supabase functions deploy identify-breed
+   supabase functions deploy chat-assistant
+   ```
 Secretos requeridos: `GEMINI_API_KEY`, `RESEND_API_KEY` y `APP_URL` (`supabase secrets list` para verlos).
 
 ### 6.4. Base de Datos (Migraciones)
