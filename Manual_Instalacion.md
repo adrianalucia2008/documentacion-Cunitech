@@ -51,8 +51,8 @@ Use esta cuenta para iniciar sesión (rol administrador):
 
 | Campo | Valor |
 |---|---|
-| Correo | `<CORREO-DE-PRUEBA>` |
-| Contraseña | `<CONTRASEÑA-DE-PRUEBA>` |
+| Correo | `admin@gmail.com` |
+| Contraseña | `123456789` |
 
 ### Paso 5: Ejecutar la aplicación en entorno de desarrollo
 Para ejecutar en el navegador web:
