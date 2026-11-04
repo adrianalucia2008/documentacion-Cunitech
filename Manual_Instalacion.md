@@ -120,7 +120,7 @@ Las funciones del servidor (IA y creación de usuarios) se despliegan a Supabase
    Una vez autenticado, vincule la carpeta local con e proyecto en la nube. Reemplace con el ID de referencia del proyecto 
 
    ```bash
-   upabase link --project-ref aswhtehpmmeetplnskmz
+   supabase link --project-ref aswhtehpmmeetplnskmz
    ```
 
 3. **Desplegar las funciones:**
