@@ -47,34 +47,23 @@ CUNITECH se conecta a Supabase mediante credenciales. Asegúrese de tener config
 
 *(Nota: En producción, estas credenciales deben gestionarse mediante variables de entorno o archivos de configuración seguros).*
 
-### Paso 4: Ejecutar la aplicación en entorno de desarrollo
-Para ejecutar en el navegador web:
-```bash
-flutter run -d chrome
-```
+## 4. Despliegue en Producción
 
-Para ejecutar en un dispositivo Android conectado por USB:
-```bash
-flutter run -d <ID_DEL_DISPOSITIVO>
-```
-
-## 5. Despliegue en Producción
-
-### 5.1. Despliegue del Frontend (Flutter Web)
+### 4.1. Despliegue del Frontend (Flutter Web)
 Para compilar la versión web optimizada para producción:
 ```bash
 flutter build web --release
 ```
 El resultado se genera en la carpeta `build/web/`. Este contenido puede desplegarse en servicios como Firebase Hosting, Netlify, Vercel o un servidor propio.
 
-### 5.2. Despliegue del Frontend (Android)
+### 4.2. Despliegue del Frontend (Android)
 Para compilar el APK de Android:
 ```bash
 flutter build apk --release
 ```
 El archivo APK se genera en `build/app/outputs/flutter-apk/app-release.apk` y puede distribuirse directamente o publicarse en Google Play.
 
-### 5.3. Despliegue del Backend (Edge Functions)
+### 4.3. Despliegue del Backend (Edge Functions)
 Las funciones del servidor (IA y creación de usuarios) se despliegan a Supabase mediante CLI. Asegúrese de estar autenticado y vinculado al proyecto:
 ```bash
 supabase login
@@ -85,14 +74,14 @@ supabase functions deploy identify-breed
 supabase functions deploy chat-assistant
 ```
 
-### 5.4. Base de Datos (Migraciones)
+### 4.4. Base de Datos (Migraciones)
 Si se realizan cambios en la base de datos, aplique las migraciones correspondientes:
 ```bash
 supabase db push
 ```
 *(Nota: En este proyecto, las migraciones se aplican manualmente mediante SQL Editor cuando sea necesario).*
 
-## 6. Verificación del Despliegue (Smoke Tests)
+## 5. Verificación del Despliegue (Smoke Tests)
 
 **1. Verificar que la app carga correctamente:**
 Abra el navegador o la app en el dispositivo, e inicie sesión con un usuario válido (ej. admin).
@@ -105,6 +94,18 @@ supabase.supabase_flutter: INFO: ***** Supabase init completed *****
 
 **3. Verificar Edge Functions:**
 Realice una acción que invoque una función (ej. crear un usuario desde el panel de admin o generar un insight desde el dashboard). En los logs de Supabase → Edge Functions, debe registrarse la invocación exitosa.
+
+### Paso 6: Ejecutar la aplicación en entorno de desarrollo
+Para ejecutar en el navegador web:
+```bash
+flutter run -d chrome
+```
+
+Para ejecutar en un dispositivo Android conectado por USB:
+```bash
+flutter run -d <ID_DEL_DISPOSITIVO>
+```
+
 
 ## 7. Comandos de Operación Diaria
 * **Ejecutar en desarrollo (Web):** `flutter run -d chrome`
