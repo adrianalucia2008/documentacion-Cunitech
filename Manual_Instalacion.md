@@ -56,30 +56,55 @@ flutter build web --release
 ```
 El resultado se genera en la carpeta `build/web/`. Este contenido puede desplegarse en servicios como Firebase Hosting, Netlify, Vercel o un servidor propio.
 
+
 ### 5.2. Despliegue del Frontend (Android)
-Para compilar el APK de Android:
+
+Para compilar el APK de Android (versión de producción optimizada):
 ```bash
 flutter build apk --release
 ```
-El archivo APK se genera en `build/app/outputs/flutter-apk/app-release.apk` y puede distribuirse directamente o publicarse en Google Play.
+El archivo APK se generará en la ruta `build/app/outputs/flutter-apk/app-release.apk`. Este archivo puede distribuirse directamente (por ejemplo, por WhatsApp o correo) o publicarse en Google Play.
+
+**Instalación en un dispositivo Android (Modo Desarrollador):**
+Si va a instalar el APK directamente en un celular (sin usar Google Play), el dispositivo debe tener habilitados los permisos de desarrollador. Siga estos pasos:
+
+1. Ir a **Ajustes** > **Información del teléfono** (o "Acerca del teléfono").
+2. Tocar 7 veces seguidas la opción **"Número de compilación"** hasta que aparezca el mensaje *"Ahora eres desarrollador"*.
+3. Volver al menú principal de **Ajustes** > **Sistema** > **Opciones de desarrollador** (o "Ajustes adicionales" en algunas marcas).
+4. Activar la opción **"Depuración USB"** (necesaria si va a instalar por cable desde el PC).
+5. Activar la opción **"Instalar vía USB"** (en algunas marcas de celular aparece como "Instalación por USB" o "Permitir instalación desde fuentes desconocidas"). Esta opción es la que permite instalar el APK generado por Flutter.
+
+Una vez habilitados estos permisos, puede conectar el celular por USB y ejecutar:
+```bash
+flutter install
+```
+*(Nota: Si el celular bloquea la instalación, desconecte y vuelva a conectar el cable USB, y acepte el mensaje de "Permitir depuración USB" que aparecerá en la pantalla del teléfono).*
 
 ### 5.3. Despliegue del Backend (Edge Functions)
-Las funciones del servidor (IA y creación de usuarios) se despliegan a Supabase mediante CLI. Asegúrese de estar autenticado y vinculado al proyecto:
-```bash
-supabase login
-supabase link --project-ref aswhtehpmmeetplnskmz
-supabase functions deploy create-user
-supabase functions deploy generate-insights
-supabase functions deploy identify-breed
-supabase functions deploy chat-assistant
-```
+Las funciones del servidor (IA y creación de usuarios) se despliegan a Supabase mediante la CLI. Para ello, siga estos pasos:
 
-### 5.4. Base de Datos (Migraciones)
-Si se realizan cambios en la base de datos, aplique las migraciones correspondientes:
-```bash
-supabase db push
-```
-*(Nota: En este proyecto, las migraciones se aplican manualmente mediante SQL Editor cuando sea necesario).*
+1. **Autenticación en Supabase:**
+   Ejecute el siguiente comando para iniciar sesión en su cuenta de Supabase. Este paso es obligatorio la primera vez que se configura el proyecto en un equipo, ya que la CLI necesita un token de acceso para autorizar los despliegues.
+   ```bash
+   supabase login
+   ```
+   *(Nota: Se abrirá una ventana en el navegador para que ingrese sus credenciales. Si ya ha iniciado sesión previamente en este equipo, puede omitir este paso).*
+
+2. **Vincular el proyecto local con el remoto:**
+   Una vez autenticado, vincule la carpeta local con su proyecto en la nube. Reemplace con el ID de referencia del proyecto 
+
+   ```bash
+   upabase link --project-ref aswhtehpmmeetplnskmz
+   ```
+
+3. **Desplegar las funciones:**
+   Finalmente, suba cada una de las Edge Functions a producción:
+   ```bash
+   supabase functions deploy create-user
+   supabase functions deploy generate-insights
+   supabase functions deploy identify-breed
+   supabase functions deploy chat-assistant
+   ```
 
 ## 6. Verificación del Despliegue (Smoke Tests)
 
