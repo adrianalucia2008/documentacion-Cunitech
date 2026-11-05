@@ -1,4 +1,4 @@
-# Runbook de Incidentes — CUNITECH
+  # Runbook de Incidentes — CUNITECH
 
 Guía para diagnosticar y resolver fallos de CUNITECH en **menos de 10 minutos**, escrita para alguien que no conoce el proyecto. Siga el orden indicado y no cambie nada hasta tener el diagnóstico.
 
