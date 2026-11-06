@@ -161,7 +161,7 @@ El servicio quedó operativo. Todas las peticiones respondieron con HTTP 200, `"
 
 ### Utilidad del Runbook
 
-🔴 **Inútil.** El error no estaba contemplado. El Runbook entregado no contenía procedimientos para diagnosticar fallos de Nginx ni de Docker Compose. Además, el documento estaba asociado al proyecto CUNITECH, no a SmartCompost. Fue necesario improvisar el diagnóstico a partir de los logs del contenedor y de la revisión directa de `nginx.conf`.
+🔴 **Inútil.** El error no estaba contemplado. El Runbook entregado no contenía procedimientos para diagnosticar fallos de Nginx ni de Docker Compose. Fue necesario improvisar el diagnóstico a partir de los logs del contenedor y de la revisión directa de `nginx.conf`.
 
 ---
 
@@ -221,8 +221,14 @@ Si ustedes fueran los dueños de este sistema, ¿qué le agregarían al `RUNBOOK
 # Capturas
 
 ![Captura 1](capturas/Captura%201.jpeg)
+
+
 ![Captura 2](capturas/Captura%202.jpeg)
+
+
 ![Captura 3](capturas/Captura%203.jpeg)
+
+
 ![Captura 4](capturas/Captura%204.jpeg)
 
 
